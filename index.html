@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <meta name="theme-color" content="#101d1c" />
+  <title>Wildbound — Open World Adventure</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game-root"><canvas id="game"></canvas></div>
+  <div class="vignette"></div>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="Wildbound home"><span class="brand-mark">W</span><span>WILDBOUND<small>FIELD JOURNAL</small></span></a>
+    <div class="world-label"><span class="live-dot"></span><span>THE EMERALD WILDS</span><i></i><span id="weather">CLEAR · 18°C</span></div>
+    <button id="map-toggle" class="icon-button" aria-label="Toggle map"><svg viewBox="0 0 24 24"><path d="M3 6.5 8.5 4l7 2.5L21 4v13.5L15.5 20l-7-2.5L3 20zM8.5 4v13.5m7-11V20"/></svg></button>
+  </header>
+  <aside class="mission-card glass">
+    <div class="eyebrow"><span class="eyebrow-line"></span> FIELD NOTE 01</div>
+    <h1>A world<br>untamed.</h1>
+    <p>Find your way through the wild. Your companion is ready to help.</p>
+    <div class="mission-progress"><div class="progress-copy"><span>FIRST STEPS</span><span id="progress-label">0 / 3</span></div><div class="progress-track"><i id="progress-bar"></i></div></div>
+    <div class="mission-checks"><div class="check-row" id="check-waterfall"><span class="check-icon">01</span><span>Discover the waterfall</span><b>○</b></div><div class="check-row" id="check-wood"><span class="check-icon">02</span><span>Gather forest wood</span><b>○</b></div><div class="check-row" id="check-shelter"><span class="check-icon">03</span><span>Build your shelter</span><b>○</b></div></div>
+  </aside>
+  <div class="compass glass"><span class="compass-n">N</span><div class="compass-dial"><i></i><b></b></div><span id="heading">N 000°</span></div>
+  <div class="location"><div class="location-pin">⌖</div><div><span class="eyebrow">CURRENT LOCATION</span><strong id="location-name">Whispering Canopy</strong></div></div>
+  <div class="status-pill glass"><span class="status-avatar">✦</span><span id="companion-state">MILO IS NEARBY</span><i></i><span class="status-dot"></span></div>
+  <div id="minimap" class="minimap glass"><canvas id="map" width="150" height="150"></canvas><span class="map-you">YOU</span></div>
+  <div id="command-toast" class="command-toast"></div>
+  <div class="controls-hint"><span>WASD</span> MOVE <i></i><span>SPACE</span> JUMP <i></i><span>SHIFT</span> SPRINT <i></i> MOUSE LOOK</div>
+  <div class="command-panel glass">
+    <div class="command-top"><div><span class="ai-orb">✦</span><div><strong>Ask Milo to do something</strong><small>Natural commands · Text or voice</small></div></div><span class="online-indicator"><i></i> ONLINE</span></div>
+    <form id="command-form"><input id="command-input" autocomplete="off" placeholder="Try “collect the wood” or “follow me”…" aria-label="AI command"/><button type="button" class="mic-button" id="mic-button" aria-label="Voice command"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21m-4 0h8"/></svg></button><button class="send-button" type="submit" aria-label="Send command"><svg viewBox="0 0 24 24"><path d="m4 12 16-8-5.8 16-2.7-6.2L4 12Z"/><path d="m11.5 13.8 4.3-4.3"/></svg></button></form>
+    <div class="suggestions"><button data-command="Follow me">FOLLOW ME</button><button data-command="Collect the wood">COLLECT WOOD</button><button data-command="Go to the waterfall">WATERFALL</button></div>
+  </div>
+  <div id="mobile-controls" class="mobile-controls"><div class="joystick" id="joystick"><div class="stick" id="stick"></div></div><div class="mobile-actions"><button id="jump-button">↑<small>JUMP</small></button><button id="run-button">»<small>RUN</small></button></div></div>
+  <div id="map-modal" class="map-modal hidden"><div class="map-card glass"><button id="close-map" class="close-map">×</button><span class="eyebrow">YOUR EXPEDITION</span><h2>Emerald Wilds</h2><canvas id="big-map" width="500" height="390"></canvas><p>Explore the forest, find resources, and let Milo lend a hand.</p></div></div>
+  <div id="start-screen" class="start-screen"><div class="start-content"><span class="start-kicker">A WILDERNESS ADVENTURE</span><h1>Find your<br><em>wild.</em></h1><p>An untamed world is waiting. Your companion Milo is ready whenever you are.</p><button id="start-button">ENTER THE WILDS <span>↗</span></button><small>BEST EXPERIENCED WITH SOUND ON</small></div><div class="start-credit">THE EMERALD WILDS <i>·</i> A LIVING WORLD</div></div>
+  <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js"}}</script>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
